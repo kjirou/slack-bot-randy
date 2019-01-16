@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/kjirou/randy/issues"
   },
-  "homepage": "https://github.com/kjirou/randy#readme"
+  "homepage": "https://github.com/kjirou/randy#readme",
+  "private": true
 }
