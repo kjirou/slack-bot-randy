@@ -1,5 +1,7 @@
 # Randy
 
+[![Build Status](https://travis-ci.org/kjirou/slack-bot-randy.svg?branch=master)](https://travis-ci.org/kjirou/slack-bot-randy)
+
 A Slack bot making randomly choice
 
 
