@@ -100,4 +100,12 @@ describe('lib/slack-command-interpreter', function() {
       });
     });
   });
+
+  describe('unknown sub-command example', function() {
+    it('should always return invalid result', function() {
+      const result = evaluateInput(`xxx`);
+      assert.strictEqual(typeof result.output, 'string');
+      assert.strictEqual(result.isValid, false);
+    });
+  });
 });
