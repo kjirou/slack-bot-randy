@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/kjirou/randy#readme",
   "private": true,
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "express": "^4.16.4"
   },
