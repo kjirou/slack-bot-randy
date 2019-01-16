@@ -82,4 +82,12 @@ describe('lib/slack-command-interpreter', function() {
       assert.strictEqual(result.isValid, false);
     });
   });
+
+  describe('help sub-command example', function() {
+    it('should always return valid result', function() {
+      const result = evaluateInput(`help`);
+      assert.strictEqual(typeof result.output, 'string');
+      assert.strictEqual(result.isValid, true);
+    });
+  });
 });
