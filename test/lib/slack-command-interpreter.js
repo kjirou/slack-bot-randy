@@ -2,9 +2,9 @@ const assert = require('assert');
 const {describe, it} = require('mocha');
 const sinon = require('sinon');
 
-const {parseText} = require('../../lib/slack-command-parser');
+const {evaluateInput} = require('../../lib/slack-command-interpreter');
 
-describe('lib/slack-command-parser', function() {
+describe('lib/slack-command-interpreter', function() {
   describe('dice sub-command examples', function() {
     let stubbedRandom;
 
@@ -27,20 +27,20 @@ describe('lib/slack-command-parser', function() {
       ['10d100', '500'],
     ].forEach(([input, expected]) => {
       it(`"${input}" => "${expected}"`, function() {
-        assert.strictEqual(parseText(`dice ${input}`).responseMessage, expected);
+        assert.strictEqual(evaluateInput(`dice ${input}`).responseMessage, expected);
       });
     });
 
     it('should return an error message without args', function() {
-      assert(/ requires one argument /.test(parseText(`dice`).responseMessage));
+      assert(/ requires one argument /.test(evaluateInput(`dice`).responseMessage));
     });
 
     it('should return an error message with 2 args', function() {
-      assert(/ requires one argument /.test(parseText(`dice 1d1 1d1`).responseMessage));
+      assert(/ requires one argument /.test(evaluateInput(`dice 1d1 1d1`).responseMessage));
     });
 
     it('should return an error message with invalid arg', function() {
-      assert(/ requires one argument /.test(parseText(`dice ndn`).responseMessage));
+      assert(/ requires one argument /.test(evaluateInput(`dice ndn`).responseMessage));
     });
   });
 });

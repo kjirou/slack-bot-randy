@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const {parseText} = require('./lib/slack-command-parser');
+const {evaluateInput} = require('./lib/slack-command-interpreter');
 
 const port = process.env.PORT || 5000;
 
@@ -14,7 +14,7 @@ app.use(
 );
 
 app.post('/receive_slack_command', function (req, res) {
-  const result = parseText(req.body.text);
+  const result = evaluateInput(req.body.text);
   res.send(result.responseMessage);
 });
 
