@@ -16,7 +16,11 @@ app.use(
 app.post('/receive_slack_command', function (req, res) {
   const result = evaluateInput(req.body.text);
   const responseMessage = `\`${req.body.text}\` => ${result.output}`;
-  res.send(responseMessage);
+
+  res.json({
+    response_type: 'in_channel',
+    text: responseMessage,
+  });
 });
 
 app.get('/', function (req, res) {
