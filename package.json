@@ -21,5 +21,8 @@
     "url": "https://github.com/kjirou/randy/issues"
   },
   "homepage": "https://github.com/kjirou/randy#readme",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
