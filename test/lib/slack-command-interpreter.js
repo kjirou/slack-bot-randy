@@ -27,20 +27,28 @@ describe('lib/slack-command-interpreter', function() {
       ['10d100', '500'],
     ].forEach(([input, expected]) => {
       it(`"${input}" => "${expected}"`, function() {
-        assert.strictEqual(evaluateInput(`dice ${input}`).responseMessage, expected);
+        const result = evaluateInput(`dice ${input}`);
+        assert.strictEqual(result.isValid, true);
+        assert.strictEqual(result.output, expected);
       });
     });
 
     it('should return an error message without args', function() {
-      assert(/ requires one argument /.test(evaluateInput(`dice`).responseMessage));
+      const result = evaluateInput(`dice`);
+      assert(/ requires one argument /.test(result.output));
+      assert.strictEqual(result.isValid, false);
     });
 
     it('should return an error message with 2 args', function() {
-      assert(/ requires one argument /.test(evaluateInput(`dice 1d1 1d1`).responseMessage));
+      const result = evaluateInput(`dice`);
+      assert(/ requires one argument /.test(result.output));
+      assert.strictEqual(result.isValid, false);
     });
 
     it('should return an error message with invalid arg', function() {
-      assert(/ requires one argument /.test(evaluateInput(`dice ndn`).responseMessage));
+      const result = evaluateInput(`dice`);
+      assert(/ requires one argument /.test(result.output));
+      assert.strictEqual(result.isValid, false);
     });
   });
 });
