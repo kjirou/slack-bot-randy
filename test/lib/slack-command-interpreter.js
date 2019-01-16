@@ -24,7 +24,6 @@ describe('lib/slack-command-interpreter', function() {
     ].forEach(([input, expected]) => {
       it(`"${input}" => "${expected}"`, function() {
         const result = evaluateInput(`choice ${input}`);
-        assert.strictEqual(result.isValid, true);
         assert.strictEqual(result.output, expected);
       });
     });
@@ -32,7 +31,6 @@ describe('lib/slack-command-interpreter', function() {
     it('should return an error message when it does not receive args', function() {
       const result = evaluateInput(`choice`);
       assert(/ requires one or more arguments/.test(result.output));
-      assert.strictEqual(result.isValid, false);
     });
   });
 
@@ -59,7 +57,6 @@ describe('lib/slack-command-interpreter', function() {
     ].forEach(([input, expected]) => {
       it(`"${input}" => "${expected}"`, function() {
         const result = evaluateInput(`dice ${input}`);
-        assert.strictEqual(result.isValid, true);
         assert.strictEqual(result.output, expected);
       });
     });
@@ -67,19 +64,16 @@ describe('lib/slack-command-interpreter', function() {
     it('should return an error message when it does not receive args', function() {
       const result = evaluateInput(`dice`);
       assert(/ requires one argument /.test(result.output));
-      assert.strictEqual(result.isValid, false);
     });
 
     it('should return an error message when it receives 2 args', function() {
       const result = evaluateInput(`dice`);
       assert(/ requires one argument /.test(result.output));
-      assert.strictEqual(result.isValid, false);
     });
 
     it('should return an error message when it receives an invalid arg', function() {
       const result = evaluateInput(`dice`);
       assert(/ requires one argument /.test(result.output));
-      assert.strictEqual(result.isValid, false);
     });
   });
 
@@ -88,7 +82,6 @@ describe('lib/slack-command-interpreter', function() {
       it('should always return valid result', function() {
         const result = evaluateInput(`help`);
         assert.strictEqual(typeof result.output, 'string');
-        assert.strictEqual(result.isValid, true);
       });
     });
 
@@ -96,7 +89,6 @@ describe('lib/slack-command-interpreter', function() {
       it('should always return valid result', function() {
         const result = evaluateInput(`default`);
         assert.strictEqual(typeof result.output, 'string');
-        assert.strictEqual(result.isValid, true);
       });
     });
   });
@@ -105,7 +97,6 @@ describe('lib/slack-command-interpreter', function() {
     it('should always return invalid result', function() {
       const result = evaluateInput(`xxx`);
       assert.strictEqual(typeof result.output, 'string');
-      assert.strictEqual(result.isValid, false);
     });
   });
 });
