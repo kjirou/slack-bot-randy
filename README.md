@@ -19,7 +19,7 @@ A Slack bot making randomly choice
 ## :wrench: Development
 ### Softwares that needs to be locally installed
 
-- [Node.js](https://nodejs.org/) `>= 10`
+- [Node.js](https://nodejs.org/) `== 10`
 - [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
 ### Install this application
