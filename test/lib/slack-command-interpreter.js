@@ -5,7 +5,7 @@ const sinon = require('sinon');
 const {evaluateInput} = require('../../lib/slack-command-interpreter');
 
 describe('lib/slack-command-interpreter', function() {
-  describe('dice sub-command examples', function() {
+  describe('choice sub-command examples', function() {
     let stubbedRandom;
 
     beforeEach(function() {
