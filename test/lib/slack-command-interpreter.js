@@ -29,7 +29,7 @@ describe('lib/slack-command-interpreter', function() {
       });
     });
 
-    it('should return an error message without args', function() {
+    it('should return an error message when it does not receive args', function() {
       const result = evaluateInput(`choice`);
       assert(/ requires one or more arguments/.test(result.output));
       assert.strictEqual(result.isValid, false);
@@ -64,19 +64,19 @@ describe('lib/slack-command-interpreter', function() {
       });
     });
 
-    it('should return an error message without args', function() {
+    it('should return an error message when it does not receive args', function() {
       const result = evaluateInput(`dice`);
       assert(/ requires one argument /.test(result.output));
       assert.strictEqual(result.isValid, false);
     });
 
-    it('should return an error message with 2 args', function() {
+    it('should return an error message when it receives 2 args', function() {
       const result = evaluateInput(`dice`);
       assert(/ requires one argument /.test(result.output));
       assert.strictEqual(result.isValid, false);
     });
 
-    it('should return an error message with invalid arg', function() {
+    it('should return an error message when it receives an invalid arg', function() {
       const result = evaluateInput(`dice`);
       assert(/ requires one argument /.test(result.output));
       assert.strictEqual(result.isValid, false);
