@@ -79,24 +79,24 @@ describe('lib/slack-command-interpreter', function() {
 
   describe('help and default sub-commands examples', function() {
     describe('when help is called', function() {
-      it('should always return valid result', function() {
+      it('should always return an usage', function() {
         const result = evaluateInput(`help`);
-        assert.strictEqual(typeof result.output, 'string');
+        assert(/Usage/.test(result.output));
       });
     });
 
     describe('when defalut is called', function() {
-      it('should always return valid result', function() {
+      it('should always return an usage', function() {
         const result = evaluateInput(`default`);
-        assert.strictEqual(typeof result.output, 'string');
+        assert(/Usage/.test(result.output));
       });
     });
   });
 
   describe('unknown sub-command example', function() {
-    it('should always return invalid result', function() {
+    it('should always return a general error message', function() {
       const result = evaluateInput(`xxx`);
-      assert.strictEqual(typeof result.output, 'string');
+      assert(/Invalid/.test(result.output));
     });
   });
 });
