@@ -19,7 +19,7 @@ app.post('/receive_slack_command', function (req, res) {
   const responseMessage = `\`${input}\` => ${result.output}`;
 
   res.json({
-    response_type: 'in_channel',
+    response_type: result.responseType,
     text: responseMessage,
   });
 });
